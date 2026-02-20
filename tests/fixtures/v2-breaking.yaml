@@ -1,0 +1,111 @@
+openapi: "3.0.3"
+info:
+  title: Pet Store API
+  version: "2.0.0"
+paths:
+  /pets:
+    get:
+      operationId: listPets
+      summary: List all pets (updated)
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: owner_id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A list of pets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pets:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Pet'
+                required:
+                  - pets
+    post:
+      operationId: createPet
+      summary: Create a pet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                species:
+                  type: string
+                  enum: [dog, cat]
+                owner_id:
+                  type: string
+              required:
+                - name
+                - owner_id
+      responses:
+        "201":
+          description: Pet created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+  /pets/{petId}:
+    get:
+      operationId: getPet
+      summary: Get a pet by ID
+      parameters:
+        - name: petId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: A pet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+  /pets/{petId}/vaccines:
+    get:
+      operationId: listVaccines
+      summary: List vaccines for a pet
+      parameters:
+        - name: petId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Vaccine list
+components:
+  schemas:
+    Pet:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        species:
+          type: string
+      required:
+        - id
+        - name
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+security:
+  - BearerAuth: []
