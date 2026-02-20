@@ -1,5 +1,5 @@
 {
-  "name": "schemaguard",
+  "name": "@sethclawd/schemaguard",
   "version": "0.1.0",
   "description": "API Schema Drift Monitor — detect breaking changes in OpenAPI specs",
   "main": "dist/index.js",
