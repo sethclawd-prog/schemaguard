@@ -1,0 +1,104 @@
+{
+  "payload": {
+    "type": "hosted",
+    "stateful": false,
+    "hasAuthAdapter": false,
+    "serverCard": {
+      "serverInfo": {
+        "name": "schemaguard",
+        "version": "0.1.3"
+      },
+      "tools": [
+        {
+          "name": "schemaguard_diff",
+          "description": "Compare two OpenAPI specs and detect breaking vs non-breaking changes. Use when reviewing API changes, validating PRs that modify API specs, or checking backward compatibility.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "old_spec": {
+                "type": "string",
+                "description": "File path to the old/baseline OpenAPI spec (YAML or JSON)"
+              },
+              "new_spec": {
+                "type": "string",
+                "description": "File path to the new/current OpenAPI spec (YAML or JSON)"
+              },
+              "format": {
+                "default": "human",
+                "description": "Output format",
+                "type": "string",
+                "enum": [
+                  "human",
+                  "json"
+                ]
+              }
+            },
+            "required": [
+              "old_spec",
+              "new_spec"
+            ],
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          },
+          "execution": {
+            "taskSupport": "forbidden"
+          }
+        },
+        {
+          "name": "schemaguard_lint",
+          "description": "Validate an OpenAPI spec for quality issues. Checks for missing operationIds, descriptions, security schemes, etc.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "spec": {
+                "type": "string",
+                "description": "File path to the OpenAPI spec to lint (YAML or JSON)"
+              }
+            },
+            "required": [
+              "spec"
+            ],
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          },
+          "execution": {
+            "taskSupport": "forbidden"
+          }
+        },
+        {
+          "name": "schemaguard_check",
+          "description": "CI-style check: compare spec against baseline and report if breaking changes exist. Returns a clear pass/fail verdict.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "spec": {
+                "type": "string",
+                "description": "File path to the current OpenAPI spec"
+              },
+              "baseline": {
+                "type": "string",
+                "description": "File path to the baseline OpenAPI spec"
+              }
+            },
+            "required": [
+              "spec",
+              "baseline"
+            ],
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          },
+          "execution": {
+            "taskSupport": "forbidden"
+          }
+        }
+      ],
+      "resources": [],
+      "prompts": []
+    },
+    "source": {
+      "commit": "0ea8545a38e5c30c65f18f0b0993054bea15fe20",
+      "branch": "main"
+    }
+  },
+  "artifacts": {
+    "module": "module.js",
+    "sourcemap": "module.js.map"
+  }
+}

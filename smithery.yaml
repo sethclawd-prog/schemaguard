@@ -9,3 +9,7 @@ startCommand:
     |-
     (config) => ({ command: 'node', args: ['mcp-server.js'] })
   exampleConfig: {}
+
+# Override entry point for Smithery build/scan
+build:
+  entry: smithery-entry.mjs
