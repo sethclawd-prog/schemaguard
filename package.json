@@ -1,6 +1,6 @@
 {
   "name": "@sethclawd/schemaguard",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "API Schema Drift Monitor — detect breaking changes in OpenAPI specs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -13,7 +13,15 @@
     "dev": "tsc --watch",
     "lint": "tsc --noEmit"
   },
-  "keywords": ["openapi", "schema", "drift", "breaking-changes", "cli", "api", "ci"],
+  "keywords": [
+    "openapi",
+    "schema",
+    "drift",
+    "breaking-changes",
+    "cli",
+    "api",
+    "ci"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -22,6 +30,8 @@
   "homepage": "https://github.com/sethclawd-prog/schemaguard#readme",
   "files": [
     "dist",
+    "mcp-server.js",
+    "AGENTS.md",
     "README.md",
     "LICENSE"
   ],

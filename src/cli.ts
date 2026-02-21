@@ -93,4 +93,9 @@ program
     }
   });
 
-program.parse();
+// MCP server mode
+if (process.argv.includes('--mcp')) {
+  require('../mcp-server');
+} else {
+  program.parse();
+}
