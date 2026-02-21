@@ -1,6 +1,7 @@
 {
   "name": "@sethclawd/schemaguard",
-  "version": "0.1.1",
+  "mcpName": "io.github.sethclawd-prog/schemaguard",
+  "version": "0.1.2",
   "description": "API Schema Drift Monitor — detect breaking changes in OpenAPI specs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
